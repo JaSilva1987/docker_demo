@@ -1,7 +1,14 @@
-FROM node:alpine
+FROM node:12-alpine
 
-COPY . /app
+WORKDIR /apps
 
-WORKDIR /app
+COPY package.json .
 
-CMD node app.js
+RUN apk add --no-chache -f python2 g++ make
+RUN yarn install --production
+
+COPY . .
+
+CMD ["node", "src/index.js"]
+
+EXPOSE 3000
