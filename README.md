@@ -18,3 +18,19 @@ docker image remove app:v1.0.0
 
 ## Para subir a imagem ao dockerHub
 docker push <NOME DO REPOSITORIO>:<TAG VERSION>
+
+## Vincular porta do computador que irá enviar e escutar no docker
+docker run -d -p 80:3000   
+docker run -d -p 80:3000 --name <NOME DO CONTAINER> <ANOME DA APLICACAO>:<VERSAO>
+
+## Parando um container
+docker stop <NOME DO CONTAINER>
+
+## Criando volume
+docker volume create <NOME DO VOLUME>
+
+## Verificar o que tem no volume
+docker volume inspect <NOME DO VOLUME>
+
+## Associar o volume a imagem
+docker run -d -p 80:3000 --name kiwi -v app-dados:/app/dados app:v1
